@@ -1,4 +1,5 @@
 # Perception
+![Alt text](https://github.com/ros-workshop/perception/blob/master/apriltagrobots_overlay.jpg)
 
 ## April Tags
 
@@ -8,8 +9,13 @@ There are limited USB cameras, so we will be using the built in camera in your l
 
 You will be supplied with printed April tags at the session as well as checkerboards if you would like to perform camera calibration.
 
+![Alt text](https://github.com/ros-workshop/perception/blob/master/tags_rviz.png )
+<img src="https://github.com/ros-workshop/perception/blob/master/tagformats_web.png" width="300" title="">
+
 ## Stretch goal
 
+ ![Alt text](https://github.com/ros-workshop/perception/blob/master/DNN_detect.png)
+ 
 If the above is completed in the session we will be supplying [Hokuyo](https://www.hokuyo-aut.jp/search/single.php?serial=166) LiDARs and usb cameras, and we will set up an object detection and position estimation system. We will then build our own python node to output the location of detected people.
 
 This stretch goal assumes you are familiar with:
@@ -21,13 +27,8 @@ There are limited Hokuyos available (~5) so [rosbag](http://wiki.ros.org/Bags) f
 
 If you are using either the USB Cameras or the Hokuyo LiDAR you need to have a USB Type A socket.
 
-![Alt text](https://github.com/ros-workshop/perception/blob/master/apriltagrobots_overlay.jpg)
-![Alt text](https://github.com/ros-workshop/perception/blob/master/tagformats_web.png)
-
 ## April Tag Exercise
 Use your USB camera to detect an apriltag! We are using [tag36h11](https://robot2016.mit.edu/sites/default/files/documents/project_apriltag36h11.pdf), these are provided.
-
-![Alt text](https://github.com/ros-workshop/perception/blob/master/tags_rviz.png)
 
  * Install the required packages, you may use whatever you prefer for running your camera but we will be using apriltag2_ros for detection
  * Create a launch file to start your usb camera, check that it is working with RVIZ
@@ -37,7 +38,7 @@ Use your USB camera to detect an apriltag! We are using [tag36h11](https://robot
  * View the detection in RVIZ (the tf)
  
  ## LiDAR Object detection Exercise
- ![Alt text](https://github.com/ros-workshop/perception/blob/master/DNN_detect.png)
+
  * Install the dnn_detect and urg_node packages
  * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag) *hint: can you access the device as your user?*
  * View the outputs of the camera and LiDAR in RVIZ
@@ -47,5 +48,7 @@ Use your USB camera to detect an apriltag! We are using [tag36h11](https://robot
  * Take the center of detected objects and roughtly figure out the angle they are at 
  * Using that angle to get the LiDAR distnace
  * Output the object type and distance
+ 
+ #### Hokuyu in RVIZ
   ![Alt text](https://github.com/ros-workshop/perception/blob/master/LiDAR_Hok_RVIZ.png)
 
