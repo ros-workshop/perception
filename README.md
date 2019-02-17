@@ -39,7 +39,7 @@ Use your USB camera to detect an apriltag!
  ## LiDAR Object detection Exercise
  ![Alt text](https://github.com/ros-workshop/perception/blob/master/DNN_detect.png)
  * Install the dnn_detect and urg_node packages
- * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag)
+ * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag) *hint: can you access the device as your user?*
  * View the outputs of the camera and LiDAR in RVIZ
  * Add the dnn detect node and view in RVIZ
  * Write a python node that subscribes to the dnn detect and LiDAR nodes
