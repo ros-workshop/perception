@@ -24,8 +24,10 @@ If you are using either the USB Cameras or the Hokuyo LiDAR you need to have a U
 ![Alt text](https://github.com/ros-workshop/perception/blob/master/apriltagrobots_overlay.jpg)
 ![Alt text](https://github.com/ros-workshop/perception/blob/master/tagformats_web.png)
 
-#### April Tag Exercie
+## April Tag Exercie
 Use your USB camera to detect an apriltag!
+
+![Alt text](https://github.com/ros-workshop/perception/blob/master/tags_rviz.png)
 
  * Install the required packages, you may use whatever you prefer for running your camera but we will be using apriltag2_ros for detection
  * Create a launch file to start your usb camera, check that it is working with RVIZ
@@ -34,7 +36,7 @@ Use your USB camera to detect an apriltag!
  * View the detection in RVIZ (the image)
  * View the detection in RVIZ (the tf)
  
- #### LiDAR Object detection Exercise
+ ## LiDAR Object detection Exercise
  ![Alt text](https://github.com/ros-workshop/perception/blob/master/DNN_detect.png)
  * Install the dnn_detect and urg_node packages
  * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag)
