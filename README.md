@@ -24,7 +24,7 @@ If you are using either the USB Cameras or the Hokuyo LiDAR you need to have a U
 ![Alt text](https://github.com/ros-workshop/perception/blob/master/apriltagrobots_overlay.jpg)
 ![Alt text](https://github.com/ros-workshop/perception/blob/master/tagformats_web.png)
 
-## April Tag Exercie
+## April Tag Exercise
 Use your USB camera to detect an apriltag!
 
 ![Alt text](https://github.com/ros-workshop/perception/blob/master/tags_rviz.png)
