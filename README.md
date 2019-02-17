@@ -35,6 +35,7 @@ Use your USB camera to detect an apriltag!
  * View the detection in RVIZ (the tf)
  
  #### LiDAR Object detection Exercise
+ ![Alt text](https://github.com/ros-workshop/perception/blob/master/DNN_detect.png)
  * Install the dnn_detect and urg_node packages
  * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag)
  * View the outputs of the camera and LiDAR in RVIZ
@@ -44,4 +45,5 @@ Use your USB camera to detect an apriltag!
  * Take the center of detected objects and roughtly figure out the angle they are at. 
  * Using that angle to get the LiDAR distnace
  * Output the object type and distance
- 
+  ![Alt text](https://github.com/ros-workshop/perception/blob/master/LiDAR_Hok_RVIZ.png)
+
