@@ -44,7 +44,7 @@ Use your USB camera to detect an apriltag!
  * Add the dnn detect node and view in RVIZ
  * Write a python node that subscribes to the dnn detect and LiDAR nodes
  * Calculate the angles of the LiDAR that overlap the cameras vision (the lidar is 270 degrees, single layer). This can be done roughly, even with your hand if you are using the hardware.
- * Take the center of detected objects and roughtly figure out the angle they are at. 
+ * Take the center of detected objects and roughtly figure out the angle they are at 
  * Using that angle to get the LiDAR distnace
  * Output the object type and distance
   ![Alt text](https://github.com/ros-workshop/perception/blob/master/LiDAR_Hok_RVIZ.png)
