@@ -31,6 +31,8 @@ If you are using either the USB Cameras or the Hokuyo LiDAR you need to have a U
 Use your USB camera to detect an apriltag! We are using [tag36h11](https://robot2016.mit.edu/sites/default/files/documents/project_apriltag36h11.pdf), these are provided.
 
  * Install the required packages, you may use whatever you prefer for running your camera but we will be using apriltag2_ros for detection
+ 
+ 
   <details>
 <summary>Click for a hint</summary>
 usb_cam is a quick and easy node to get your webcam going
@@ -38,6 +40,8 @@ usb_cam is a quick and easy node to get your webcam going
  * Create a launch file to start your usb camera, check that it is working with RVIZ
  * Add the apriltag node and configure it (tip: you need to configure the node to subscribe to your camera publisher and add your apriltag to the config file)
   <details>
+ 
+ 
 <summary>Click for a hint</summary>
  You may have issues with your camera being uncalibrated, check the error output of your console.
  For the hardware provided the configuration for calibration is available here:
