@@ -79,6 +79,7 @@ projection
 
 ```
 </details>
+
  * Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
  * View the detection in RVIZ (the image)
  * View the detection in RVIZ (the tf)
@@ -90,6 +91,7 @@ projection
 
  * Install the dnn_detect and urg_node packages
  * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag) *hint: can you access the device as your user?*
+ 
  <details>
 <summary>Click for a hint</summary>
  Configure the urg_node in its default settings
@@ -101,6 +103,7 @@ Other resources:
 https://answers.ros.org/question/251060/how-to-use-an-usb-hokuyo-laserscanner-in-ros-kinetic/
 
 </details>
+
  * View the outputs of the camera and LiDAR in RVIZ
  * Add the dnn detect node and view in RVIZ
  * Write a python node that subscribes to the dnn detect and LiDAR nodes
