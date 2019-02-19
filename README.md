@@ -45,39 +45,7 @@ usb_cam is a quick and easy node to get your webcam going
 <summary>Click for a hint</summary>
  You may have issues with your camera being uncalibrated, check the error output of your console.
  For the hardware provided the calibration is available here:
-```
- # oST version 5.0 parameters
 
-
-[image]
-
-width
-640
-
-height
-480
-
-[narrow_stereo]
-
-camera matrix
-712.436343 0.000000 288.440428
-0.000000 706.128957 260.341883
-0.000000 0.000000 1.000000
-
-distortion
-0.070166 -0.207724 0.006665 -0.018018 0.000000
-
-rectification
-1.000000 0.000000 0.000000
-0.000000 1.000000 0.000000
-0.000000 0.000000 1.000000
-
-projection
-714.082214 0.000000 279.563716 0.000000
-0.000000 717.848145 262.834102 0.000000
-0.000000 0.000000 1.000000 0.000000
-
-```
 </details>
 
  * Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
