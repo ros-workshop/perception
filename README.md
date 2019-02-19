@@ -31,16 +31,72 @@ If you are using either the USB Cameras or the Hokuyo LiDAR you need to have a U
 Use your USB camera to detect an apriltag! We are using [tag36h11](https://robot2016.mit.edu/sites/default/files/documents/project_apriltag36h11.pdf), these are provided.
 
  * Install the required packages, you may use whatever you prefer for running your camera but we will be using apriltag2_ros for detection
+  <details>
+<summary>Click for a hint</summary>
+usb_cam is a quick and easy node to get your webcam going
+</details>
  * Create a launch file to start your usb camera, check that it is working with RVIZ
  * Add the apriltag node and configure it (tip: you need to configure the node to subscribe to your camera publisher and add your apriltag to the config file)
- * Add a static tf from the map to camera at the height your camera is above the ground
+  <details>
+<summary>Click for a hint</summary>
+ You may have issues with your camera being uncalibrated, check the error output of your console.
+ For the hardware provided the configuration for calibration is available here:
+ '''
+ # oST version 5.0 parameters
+
+
+[image]
+
+width
+640
+
+height
+480
+
+[narrow_stereo]
+
+camera matrix
+712.436343 0.000000 288.440428
+0.000000 706.128957 260.341883
+0.000000 0.000000 1.000000
+
+distortion
+0.070166 -0.207724 0.006665 -0.018018 0.000000
+
+rectification
+1.000000 0.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 0.000000 1.000000
+
+projection
+714.082214 0.000000 279.563716 0.000000
+0.000000 717.848145 262.834102 0.000000
+0.000000 0.000000 1.000000 0.000000
+
+'''
+</details>
+ * Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
  * View the detection in RVIZ (the image)
  * View the detection in RVIZ (the tf)
+ 
+ ### Exercise stretch
+ * Calibrate your camera manually using the provided checkerboard
  
  ## LiDAR Object detection Exercise
 
  * Install the dnn_detect and urg_node packages
  * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag) *hint: can you access the device as your user?*
+ <details>
+<summary>Click for a hint</summary>
+ Configure the urg_node in its default settings
+ 
+ If you cannot open the LiDAR:
+https://answers.ros.org/question/286646/error-connecting-to-hokuyo-could-not-open-serial-hokuyo/
+
+Other resources:
+https://answers.ros.org/question/251060/how-to-use-an-usb-hokuyo-laserscanner-in-ros-kinetic/
+
+</details>
  * View the outputs of the camera and LiDAR in RVIZ
  * Add the dnn detect node and view in RVIZ
  * Write a python node that subscribes to the dnn detect and LiDAR nodes
