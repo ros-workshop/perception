@@ -39,8 +39,10 @@ usb_cam is a quick and easy node to get your webcam going
 </details>
 
 <br/>
+
  * Create a launch file to start your usb camera, check that it is working with RVIZ
  * Add the apriltag node and configure it (tip: you need to configure the node to subscribe to your camera publisher and add your apriltag to the config file)
+ 
  <br/>
   <details>
  
@@ -55,10 +57,15 @@ https://github.com/ros-workshop/perception/blob/master/ost.txt
 
 </details>
 <br/>
+
  * Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
+ 
  * View the detection in RVIZ (the image)
+ 
  * View the detection in RVIZ (the tf)
+ 
  <br/>
+ 
  ### Exercise stretch
  * Calibrate your camera manually using the provided checkerboard
  
@@ -67,7 +74,7 @@ https://github.com/ros-workshop/perception/blob/master/ost.txt
  * Install the dnn_detect and urg_node packages
  * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag) *hint: can you access the device as your user?*
  <br/>
- <details>
+<details>
 <summary>Click for a hint</summary>
  Configure the urg_node in its default settings
  
@@ -83,10 +90,13 @@ https://answers.ros.org/question/251060/how-to-use-an-usb-hokuyo-laserscanner-in
  * View the outputs of the camera and LiDAR in RVIZ
  * Add the dnn detect node and view in RVIZ
  * Write a python node that subscribes to the dnn detect and LiDAR nodes
- * Calculate the angles of the LiDAR that overlap the cameras vision (the lidar is 270 degrees, single layer). This can be done roughly, even with your hand if you are using the hardware. *It would be better to do this in the urg_node configuration, limiting the scan angle, rather than manually - but each will work.*
+ * Calculate the angles of the LiDAR that overlap the cameras vision (the lidar is 270 degrees, single layer). This can be done roughly, even with your hand if you are using the hardware. *It would be better to do this in the urg_node configuration, limiting the scan angle, rather than selecting a subset of the array... but each will work.*
  * Take the center of detected objects and roughtly figure out the angle they are at 
  * Using that angle to get the LiDAR distnace
- * Output the object type and distance
+ * Output the object type and distance as text
+ 
+  ### Exercise stretch
+ * Publish the tf of the detected object
  
  #### Hokuyu in RVIZ
   ![Alt text](https://github.com/ros-workshop/perception/blob/master/LiDAR_Hok_RVIZ.png)
