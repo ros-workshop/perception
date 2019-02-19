@@ -44,8 +44,8 @@ usb_cam is a quick and easy node to get your webcam going
  
 <summary>Click for a hint</summary>
  You may have issues with your camera being uncalibrated, check the error output of your console.
- For the hardware provided the configuration for calibration is available here:
- '''
+ For the hardware provided the calibration is available here:
+```
  # oST version 5.0 parameters
 
 
@@ -77,7 +77,7 @@ projection
 0.000000 717.848145 262.834102 0.000000
 0.000000 0.000000 1.000000 0.000000
 
-'''
+```
 </details>
  * Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
  * View the detection in RVIZ (the image)
