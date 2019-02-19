@@ -45,7 +45,8 @@ usb_cam is a quick and easy node to get your webcam going
 <summary>Click for a hint</summary>
  You may have issues with your camera being uncalibrated, check the error output of your console.
  For the hardware provided the calibration is available here:
-
+https://github.com/ros-workshop/perception/blob/master/ost.yaml
+https://github.com/ros-workshop/perception/blob/master/ost.txt
 </details>
 
  * Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
