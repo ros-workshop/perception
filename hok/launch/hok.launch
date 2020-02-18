@@ -1,7 +1,7 @@
 <launch>
  <node name="urg_node" pkg="urg_node" type="urg_node" output="screen" />
   <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
-    <param name="video_device" value="/dev/video1" />
+    <param name="video_device" value="/dev/video0" />
     <param name="camera_frame_id" value="usb_cam" />
     <param name="image_width" value="640" />
     <param name="image_height" value="480" />
@@ -11,19 +11,6 @@
   <arg name="image" default="image_raw"/>
   <arg name="transport" default="compressed"/>
 
-  <node pkg="dnn_detect" name="dnn_detect"
-    type="dnn_detect" output="screen" respawn="false">
-    <param name="image_transport" value="$(arg transport)"/>
-    <param name="publish_images" value="true" />
-    <param name="data_dir" value="$(find dnn_detect)/model"/>
-    <remap from="/camera/compressed" 
-        to="$(arg camera)/$(arg image)/$(arg transport)"/>
-    <remap from="/camera_info" to="$(arg camera)/camera_info"/>
-  </node>
-
-
-
-
- <node name="listener" pkg="hok" type="listener.py" output="screen" />
+<!-- <node name="listener" pkg="hok" type="listener.py" output="screen" /> -->
 <node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="0 0 1.5 -1 0 0 1 map laser 100" />
 </launch>
