@@ -12,7 +12,7 @@ class FaceDetector(object):
         self.image_pub = rospy.Publisher("image_topic_2", Image)
         self.bridge = CvBridge()
         self.face_cascade = None
-        self.face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+        self.face_cascade = cv2.CascadeClassifier(rospy.get_param("~haar_config"))
         self.last_range = None
         self.min_r = 640
         self.max_r = 720
