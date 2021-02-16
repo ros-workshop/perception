@@ -13,15 +13,15 @@ You will be supplied with printed April tags at the session as well as checkerbo
 <img src="https://github.com/ros-workshop/perception/blob/master/tagformats_web.png" width="300" title="">
 
 ## April Tag Exercise
-Use your USB camera to detect an apriltag! We are using [tag36h11](https://robot2016.mit.edu/sites/default/files/documents/project_apriltag36h11.pdf), these are provided.
+Use your USB camera to detect an apriltag! We are using [tag36h11](https://www.dotproduct3d.com/uploads/8/5/1/1/85115558/apriltags1-20.pdf), these are provided.
 
  * Install the required packages, you may use whatever you prefer for running your camera but we will be using ros-melodic-apriltag-ros for detection
  <br/>
  
-  <details>
+<details>
 <summary>Click for a hint</summary>
- sudo apt install ros-melodic-apriltag-ros
-usb_cam is a quick and easy node to get your webcam going
+
+`sudo apt install ros-melodic-apriltag-ros ros-melodic-usb-cam` is a quick and easy node to get your webcam going
 </details>
 
 <br/>
