@@ -1,27 +1,26 @@
 # Perception
-![Alt text](https://github.com/ros-workshop/perception/blob/master/apriltagrobots_overlay.jpg)
+![Alt text](./resources/apriltagrobots_overlay.jpg)
 
 ## April Tags
 
-In this session we will be using USB cameras to detect [April](https://april.eecs.umich.edu/software/apriltag.html) tags and view the precise 3D position, orientation, and identity of the tags relative to the camera in RVIZ.
+In this session we will be using USB cameras to detect [April tags](https://april.eecs.umich.edu/software/apriltag.html) and view the precise 3D position, orientation, and identity of the tags relative to the camera in RVIZ.
 
 There are limited USB cameras, so we will be using the built in camera in your laptop where we can and supplied [rosbag](http://wiki.ros.org/Bags) files. 
 
 You will be supplied with printed April tags at the session as well as checkerboards if you would like to perform camera calibration.
 
-![Alt text](https://github.com/ros-workshop/perception/blob/master/tags_rviz.png )
-<img src="https://github.com/ros-workshop/perception/blob/master/tagformats_web.png" width="300" title="">
+![Alt text](./resources/tags_rviz.png )
 
 ## April Tag Exercise
 Use your USB camera to detect an apriltag! We are using [tag36h11](https://www.dotproduct3d.com/uploads/8/5/1/1/85115558/apriltags1-20.pdf), these are provided.
 
- * Install the required packages, you may use whatever you prefer for running your camera but we will be using ros-melodic-apriltag-ros for detection
+ * Install the required packages, you may use whatever you prefer for running your camera but we will be using ros-noetic-apriltag-ros for detection
  <br/>
  
 <details>
 <summary>Click for a hint</summary>
 
-`sudo apt install ros-melodic-apriltag-ros ros-melodic-usb-cam` is a quick and easy node to get your webcam going
+`sudo apt install ros-noetic-apriltag-ros ros-noetic-usb-cam` is a quick and easy node to get your webcam going
 </details>
 
 <br/>
@@ -97,5 +96,5 @@ https://answers.ros.org/question/251060/how-to-use-an-usb-hokuyo-laserscanner-in
  * Publish the tf of the detected object
  
  #### Hokuyu in RVIZ
-  ![Alt text](https://github.com/ros-workshop/perception/blob/master/LiDAR_Hok_RVIZ.png)
+  ![Alt text](./resources/LiDAR_Hok_RVIZ.png)
 
