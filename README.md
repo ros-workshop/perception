@@ -46,6 +46,8 @@ The exercise is layed out below.
 If the above is completed in the session we will be supplying [Hokuyo](https://www.hokuyo-aut.jp/search/single.php?serial=166) LiDARs, depth camera and usb cameras, and we will set up an face detection and position estimation system.
 We will then build our own python node to output the location of detected people.
 
+![Alt text](./resources/LiDAR_Hok_RVIZ.png)
+
 This stretch goal assumes you are familiar with:
 * Python 
 * [Subscribing and Publishing Topics](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
@@ -57,15 +59,28 @@ If you are using either the USB Cameras or the Hokuyo LiDAR you need to have a U
  
 ### Gettin ready
 
- * Install: If you're using a hokuyo, install the urg_node package otherwise install the appropriate node for your LiDAR / depth sensor
- * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag) *hint: can you access the device as your user?*
- <br/>
+If you're using a hokuyo, install the `urg_node` package.
+Otherwise, install the appropriate node for your LiDAR / depth sensor.
+
+### LIDAR face detection
+
+- [ ] Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag) *hint: can you access the device as your user?*
+- [ ] View the outputs of the camera and LiDAR / Depth Sensor in RVIZ
+- [ ] Write a python node that subscribes to the image and LiDAR topics
+- [ ] Use OpenCV to perform face detection on the image
+- [ ] Calculate the angles of the LiDAR that overlap the cameras vision (the lidar is 270 degrees, single layer).
+  - This can be done roughly, even with your hand if you are using the hardware.
+  - *It would be better to do this in the urg_node configuration, limiting the scan angle, rather than selecting a subset of the array... but each will work.*
+- [ ] Take the center of detected objects and roughtly figure out the angle they are at 
+- [ ] Using that angle to get the LiDAR distnace
+- [ ] Output the object type and distance as text
+
 <details>
-<summary>Click for a hint</summary>
+<summary>Click for a hint if you are having trouble with your sensor</summary>
 
 Usually googling the device and ROS will bring up the driver.
  
- If you cannot open the LiDAR:
+If you cannot open the LiDAR:
 https://answers.ros.org/question/286646/error-connecting-to-hokuyo-could-not-open-serial-hokuyo/
 
 Other resources:
@@ -74,17 +89,6 @@ https://answers.ros.org/question/251060/how-to-use-an-usb-hokuyo-laserscanner-in
 </details>
 <br/>
 
- * View the outputs of the camera and LiDAR / Depth Sensor in RVIZ
- * Write a python node that subscribes to the image and LiDAR topics
- * Use OpenCV to perform face detection on the image
- * Calculate the angles of the LiDAR that overlap the cameras vision (the lidar is 270 degrees, single layer). This can be done roughly, even with your hand if you are using the hardware. *It would be better to do this in the urg_node configuration, limiting the scan angle, rather than selecting a subset of the array... but each will work.*
- * Take the center of detected objects and roughtly figure out the angle they are at 
- * Using that angle to get the LiDAR distnace
- * Output the object type and distance as text
- 
-  ### Exercise stretch
- * Publish the tf of the detected object
- 
- #### Hokuyu in RVIZ
-  ![Alt text](./resources/LiDAR_Hok_RVIZ.png)
+### Further stretch
 
+- [ ] Publish the tf of the detected object
