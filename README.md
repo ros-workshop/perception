@@ -1,60 +1,50 @@
 # Perception
+
+One of the key features that differentiate robots from simple machines is the execution or adaptation of actions based upon observations of the scene around it.
+In this lesson, we will be exploring one of the more ubiquitous elements of robotic perception, detection of a fiducial marker.
+We will also be touching on complex detection of a human face in a stretch goal.
+
 ![Alt text](./resources/apriltagrobots_overlay.jpg)
 
 ## April Tags
 
-In this session we will be using USB cameras to detect [April tags](https://april.eecs.umich.edu/software/apriltag.html) and view the precise 3D position, orientation, and identity of the tags relative to the camera in RVIZ.
+[April tags](https://april.eecs.umich.edu/software/apriltag.html) are a form of fiducial (derived from the latin word for trust) developed in one of the robotics departments at the University of Michigan.
+Fiducials are physical markers which can be localised in 3D (truly 6DOF) with respect to a camera which captured them in 2D (truly 3DOF).
 
-There are limited USB cameras, so we will be using the built in camera in your laptop where we can and supplied [rosbag](http://wiki.ros.org/Bags) files. 
+![Alt text](./resources/tags_rviz.png)
 
-You will be supplied with printed April tags at the session as well as checkerboards if you would like to perform camera calibration.
+In this session, we will be using simple and cheap cameras to detect and view the precise position and orientation of the tags relative to the camera.
+There are a limited number of USB cameras, so we will also be using the built in camera in your laptop where we can.
+We will also be trying out the supplied [rosbag](http://wiki.ros.org/Bags) files for some more examples if you wish.
+You will be supplied with printed April tags and a calibration board at the session.
 
-![Alt text](./resources/tags_rviz.png )
+### Preperation
 
-## April Tag Exercise
-Use your USB camera to detect an apriltag! We are using [tag36h11](https://www.dotproduct3d.com/uploads/8/5/1/1/85115558/apriltags1-20.pdf), these are provided.
+You will need a driver for the camera you will be using, and the Apriltag package.
+Most USB cameras and in-built laptop camera can be run with the `usb_cam` package.
+We will also be using a particular ros package for calibrating your sensor; `camera_calibration`.
 
- * Install the required packages, you may use whatever you prefer for running your camera but we will be using ros-noetic-apriltag-ros for detection
- <br/>
- 
-<details>
-<summary>Click for a hint</summary>
+```bash
+sudo apt install ros-noetic-usb-cam ros-noetic-apriltag-ros ros-noetic-camera-calibration
+```
 
-`sudo apt install ros-noetic-apriltag-ros ros-noetic-usb-cam` is a quick and easy node to get your webcam going
-</details>
+### April Tag Exercise
 
-<br/>
+Use your USB camera to detect an apriltag!
+We are using [tag36h11](https://www.dotproduct3d.com/uploads/8/5/1/1/85115558/apriltags1-20.pdf), these are provided.
+The exercise is layed out below.
 
- * Create a launch file to start your usb camera, check that it is working with RVIZ
- * Calibrate your camera with a checkerboard and http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
- * Add the apriltag node and configure it (tip: you need to configure the node to subscribe to your camera publisher and add your apriltag to the config file)
- 
- <br/>
-  <details>
- 
- 
-<summary>Click for a hint</summary>
- You may have issues with your camera being uncalibrated, check the error output of your console.
- For the hardware provided the calibration is available here:
- 
-https://github.com/ros-workshop/perception/blob/master/ost.yaml
-
-https://github.com/ros-workshop/perception/blob/master/ost.txt
-
-</details>
-<br/>
-
- * Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
- 
- * View the detection in RVIZ (the image)
- 
- * View the detection in RVIZ (the tf)
- 
- <br/>
+- [ ] Create a launch file to start your usb camera, check that it is working with RVIZ
+- [ ] Calibrate your camera with a checkerboard and http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
+- [ ] Add the apriltag node to your launch file and configure it (tip: you need to configure the node to subscribe to your camera publisher and add your apriltag to the config file)
+- [ ] Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
+- [ ] View the detection in RVIZ (the image)
+- [ ] View the detection in RVIZ (the tf)
 
 ## Stretch goal
  
-If the above is completed in the session we will be supplying [Hokuyo](https://www.hokuyo-aut.jp/search/single.php?serial=166) LiDARs, depth camera and usb cameras, and we will set up an face detection and position estimation system. We will then build our own python node to output the location of detected people.
+If the above is completed in the session we will be supplying [Hokuyo](https://www.hokuyo-aut.jp/search/single.php?serial=166) LiDARs, depth camera and usb cameras, and we will set up an face detection and position estimation system.
+We will then build our own python node to output the location of detected people.
 
 This stretch goal assumes you are familiar with:
 * Python 
@@ -65,7 +55,7 @@ There are limited Hokuyos available so [rosbag](http://wiki.ros.org/Bags) files 
 
 If you are using either the USB Cameras or the Hokuyo LiDAR you need to have a USB Type A socket.
  
- ## LiDAR Face detection Exercise
+### Gettin ready
 
  * Install: If you're using a hokuyo, install the urg_node package otherwise install the appropriate node for your LiDAR / depth sensor
  * Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag) *hint: can you access the device as your user?*
