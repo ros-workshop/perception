@@ -9,14 +9,30 @@ We will also be touching on complex detection of a human face in a stretch goal.
 ## April Tags
 
 [April tags](https://april.eecs.umich.edu/software/apriltag.html) are a form of fiducial (derived from the latin word for trust) developed in one of the robotics departments at the University of Michigan.
-Fiducials are physical markers which can be localised in 3D (truly 6DOF) with respect to a camera which captured them in 2D (truly 3DOF).
+Fiducials are physical markers that can be localised in 3D with respect to a camera that's viewing them in 2D.
 
 ![Alt text](./resources/tags_rviz.png)
 
-In this session, we will be using simple and cheap cameras to detect and view the precise position and orientation of the tags relative to the camera.
-There are a limited number of USB cameras, so we will also be using the built in camera in your laptop where we can.
-We will also be trying out the supplied [rosbag](http://wiki.ros.org/Bags) files for some more examples if you wish.
-You will be supplied with printed April tags and a calibration board at the session.
+## Exercise
+
+In this session, we will be using simple and cheap cameras to detect and view the precise position and orientation of the tags relative to the camera.  You can either use your laptop's USB camera, or work with a prerecorded [rosbag](http://wiki.ros.org/Bags) file.
+
+### Option 1: USB camera
+
+Either use your laptop's camera, or ask an instructor to borrow a USB camera. Look for the camera calibration boards and April Tags that have been provided around the workshop. We will be using the April Tag group [tag36h11](https://www.dotproduct3d.com/uploads/8/5/1/1/85115558/apriltags1-20.pdf).
+
+A ROS driver is required for your camera; most USB cameras and in-built laptop camera can be run with the `usb_cam` package. To calibrate your camera we'll use the `camera_calibration` package.
+
+Install these packages: 
+
+```bash
+sudo apt install ros-$ROS_DISTRO-usb-cam \
+    ros-$ROS_DISTRO-apriltag-ros \
+    ros-$ROS_DISTRO-camera-calibration
+```
+
+
+
 
 ### Preperation
 There are two alternatives for this exercise, depending if you have a camera on your laptop:
