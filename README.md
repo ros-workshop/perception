@@ -19,23 +19,40 @@ We will also be trying out the supplied [rosbag](http://wiki.ros.org/Bags) files
 You will be supplied with printed April tags and a calibration board at the session.
 
 ### Preperation
+There are two alternatives for this exercise, depending if you have a camera on your laptop:
 
+<h4>Alternate 1:</h4>
 You will need a driver for the camera you will be using, and the Apriltag package.
 Most USB cameras and in-built laptop camera can be run with the `usb_cam` package.
 We will also be using a particular ros package for calibrating your sensor; `camera_calibration`.
 
 ```bash
-sudo apt install ros-noetic-usb-cam ros-noetic-apriltag-ros ros-noetic-camera-calibration
+sudo apt install ros-$ROS_DISTRO-usb-cam ros-$ROS_DISTRO-apriltag-ros ros-$ROS_DISTRO-camera-calibration
 ```
+<b>Steps:</b>
+<br/>
+- [ ] Create a launch file to start your usb camera, check that it is working with RVIZ
+- [ ] Calibrate your camera with a checkerboard and http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
+
+<h4>Alternate 2:</h4>
+Use the rosbag april_tag.bag, this will be provided by your mentor. Here you will playpack a recorded camera.
+
+You will need the Apriltag package.
+```bash
+ros-$ROS_DISTRO-apriltag-ros
+```
+<b>Steps:</b>
+<br/>
+- [ ] Create a launch file to start your bag playback including using the loop command, check that it is working with RVIZ
 
 ### April Tag Exercise
 
 Use your USB camera to detect an apriltag!
-We are using [tag36h11](https://www.dotproduct3d.com/uploads/8/5/1/1/85115558/apriltags1-20.pdf), these are provided.
-The exercise is layed out below.
+We are using [tag36h11](https://www.dotproduct3d.com/uploads/8/5/1/1/85115558/apriltags1-20.pdf), these are provided as A4 paper tags for alternative 1 and is already in the image of the bag.
 
-- [ ] Create a launch file to start your usb camera, check that it is working with RVIZ
-- [ ] Calibrate your camera with a checkerboard and http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
+The exercise is layed out below.
+<br/><b>Steps:</b>
+<br/>
 - [ ] Add the apriltag node to your launch file and configure it (tip: you need to configure the node to subscribe to your camera publisher and add your apriltag to the config file)
 - [ ] Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
 - [ ] View the detection in RVIZ (the image)
@@ -43,50 +60,25 @@ The exercise is layed out below.
 
 ## Stretch goal
  
-If the above is completed in the session we will be supplying [Hokuyo](https://www.hokuyo-aut.jp/search/single.php?serial=166) LiDARs, depth camera and usb cameras, and we will set up an face detection and position estimation system.
-We will then build our own python node to output the location of detected people.
-
-![Alt text](./resources/LiDAR_Hok_RVIZ.png)
+If the above is completed in the session we will be supplying a bag (face_detection.bag) containing a LiDAR, usb camera, and we will set up an face detection and position estimation system. We will then build our own python node to output the location of detected people.
 
 This stretch goal assumes you are familiar with:
 * Python 
 * [Subscribing and Publishing Topics](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 * Rosbag playing
 
-There are limited Hokuyos available so [rosbag](http://wiki.ros.org/Bags) files will be supplied for students to work with until they are ready to test their software.
-
-If you are using either the USB Cameras or the Hokuyo LiDAR you need to have a USB Type A socket.
- 
-### Gettin ready
-
-If you're using a hokuyo, install the `urg_node` package.
-Otherwise, install the appropriate node for your LiDAR / depth sensor.
-
 ### LIDAR face detection
 
-- [ ] Create a launch file that starts the LiDAR and the usb camera (or use the provided rosbag) *hint: can you access the device as your user?*
+- [ ] Create a launch file that starts the rosbag (it makes it easier if you loop the bag)
 - [ ] View the outputs of the camera and LiDAR / Depth Sensor in RVIZ
 - [ ] Write a python node that subscribes to the image and LiDAR topics
 - [ ] Use OpenCV to perform face detection on the image
 - [ ] Calculate the angles of the LiDAR that overlap the cameras vision (the lidar is 270 degrees, single layer).
-  - This can be done roughly, even with your hand if you are using the hardware.
-  - *It would be better to do this in the urg_node configuration, limiting the scan angle, rather than selecting a subset of the array... but each will work.*
+  - This can be done roughly.
 - [ ] Take the center of detected objects and roughtly figure out the angle they are at 
-- [ ] Using that angle to get the LiDAR distnace
+- [ ] Using that angle to get the LiDAR distance
 - [ ] Output the object type and distance as text
 
-<details>
-<summary>Click for a hint if you are having trouble with your sensor</summary>
-
-Usually googling the device and ROS will bring up the driver.
- 
-If you cannot open the LiDAR:
-https://answers.ros.org/question/286646/error-connecting-to-hokuyo-could-not-open-serial-hokuyo/
-
-Other resources:
-https://answers.ros.org/question/251060/how-to-use-an-usb-hokuyo-laserscanner-in-ros-kinetic/
-
-</details>
 <br/>
 
 ### Further stretch
