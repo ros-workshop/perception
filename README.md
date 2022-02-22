@@ -1,85 +1,81 @@
 # Perception
-![Alt text](https://github.com/ros-workshop/perception/blob/master/apriltagrobots_overlay.jpg)
+
+One of the key features that differentiate robots from simple machines is their ability to act based on observations of the environment.
+In this lesson we will explore two common tasks in robotic perception: Detecting and tracking visual fiducial markers, and in a stretch goal, human faces.
+
+![U. Michigan's MAGIC 2010 Robots, courtesey Edwin Olson](./resources/apriltagrobots_overlay.jpg)
+## Visual Fiducials
+
+Derived from the latin word for trust, _fiducials_ are physical markers that can be used as a point of reference. When the size and shape of visual fiducials are known, they can be localised in 3D with respect to a calibrated 2D camera.
+
+[April Tags](https://april.eecs.umich.edu/software/apriltag.html) are a popular set of visual fiducials developed at the University of Michigan. In this workshop we will use the April Tag group `tag36h11` (download [here](./resources/tag36h11_200mm_id_000-049.pdf), source [here](https://github.com/rgov/apriltag-pdfs)).
 
 ## April Tags
 
-In this session we will be using USB cameras to detect [April](https://april.eecs.umich.edu/software/apriltag.html) tags and view the precise 3D position, orientation, and identity of the tags relative to the camera in RVIZ.
+In this session, we will use inexpensive cameras to detect and track the relative position and orientation of April Tags. Start by installing the April Tags ROS package: 
 
-There are limited USB cameras, so we will be using the built in camera in your laptop where we can and supplied [rosbag](http://wiki.ros.org/Bags) files. 
+```bash
+sudo apt install ros-$ROS_DISTRO-apriltag-ros
+```
 
-You will be supplied with printed April tags at the session as well as checkerboards if you would like to perform camera calibration.
+There are two ways to source camera data for this exercise: Live data from a USB camera, or prerecorded data from a ROS bag file. 
 
-![Alt text](https://github.com/ros-workshop/perception/blob/master/tags_rviz.png )
-<img src="https://github.com/ros-workshop/perception/blob/master/tagformats_web.png" width="300" title="">
+### Option 1: Live USB camera
 
-## April Tag Exercise
+Choose either use your laptop's camera, or borrow a USB camera from a mentor. To integrate the camera into ROS, you'll need to install the correct driver; fortunately, most USB cameras and in-built laptop cameras work with the `usb_cam` package. We'll also need the `camera_calibration` package to calibrate your camera. Install these packages: 
 
-<h3>Alternate 1:</h3>
-Use your USB camera to detect an apriltag! We are using [tag36h11](https://www.dotproduct3d.com/uploads/8/5/1/1/85115558/apriltags1-20.pdf), these are provided.
+```bash
+sudo apt install ros-$ROS_DISTRO-usb-cam \
+                 ros-$ROS_DISTRO-camera-calibration
+```
 
- * Install the required packages, you may use whatever you prefer for running your camera but we will be using ros-melodic-apriltag-ros for detection
- <br/>
- 
-<details>
-<summary>Click for a hint</summary>
+#### Steps:
+1. Create a launch file that loads the USB camera driver.
+1. Check that the camera's images are visible with `rviz`. 
+1. Locate a camera calibration checkerboard 
+1. Calibrate your camera with a checkerboard by following [these instructions](http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration).
+1. Source one or more of the April Tags that have been distributed around the workshop. 
 
-`sudo apt install ros-melodic-apriltag-ros ros-melodic-usb-cam` is a quick and easy node to get your webcam going
-</details>
 
-<br/>
+### Option 2: Prerecorded bag file
 
-<h3>Alternate 2:</h3>
-Use provided rosbag april_tag.bag
+Ask one of the mentors for a copy of the ROS bag file `april_tag.bag`. 
 
-<br> <h3>For both alternates:</h3> </br>
+#### Steps:
+1. Create a launch file that plays the ROS bag file.
+1. Set the bag file to loop repeatedy. 
+1. Check that the camera's images are visible with `rviz`. 
+1. Explore how the camera calibration is stored in the bag file. 
 
- * Create a launch file to start your usb camera/ bag file, check that it is working with RVIZ
- * Calibrate your camera with a checkerboard and http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
- * Add the apriltag node and configure it (tip: you need to configure the node to subscribe to your camera publisher and add your apriltag to the config file)
- 
- <br/>
-  <details>
- 
- 
-<summary>Click for a hint</summary>
- You may have issues with your camera being uncalibrated, check the error output of your console.
- For the hardware provided the calibration is available here:
- 
-https://github.com/ros-workshop/perception/blob/master/ost.yaml
+### April Tag Exercise
 
-https://github.com/ros-workshop/perception/blob/master/ost.txt
+Once you have sourced camera data from either a live camera or bag file:
 
-</details>
-<br/>
+1. Add the April Tag node to your launch file and configure it (Tip: you will need to configure the node to subscribe to your camera publisher and add your April Tag ID to a configuration file)
+1. Add a static `tf` from the map to camera at the height your camera is above the ground.
+1. View the image topic showing the tag detection in `rviz`.
+1. View the `tf` tree in `rviz`, it should look like this: 
 
- * Add a static tf from the map to camera at the height your camera is above the ground (a tape measure is provided)
- 
- * View the detection in RVIZ (the image)
- 
- * View the detection in RVIZ (the tf)
- 
- <br/>
+![Rviz view of two April Tags](./resources/tags_rviz.png)
+
 
 ## Stretch goal
  
-If the above is completed in the session we will be supplying a bag (face_detection.bag) containing a LiDAR, usb camera, and we will set up an face detection and position estimation system. We will then build our own python node to output the location of detected people.
-
-This stretch goal assumes you are familiar with:
+The stretch goal is to create a face detection and position estimation system as a Python node. It assumes you are familiar with:
 * Python 
 * [Subscribing and Publishing Topics](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
-* Rosbag playing
- 
- ## LiDAR Face detection Exercise
+* Playing ROS bags
 
- * Create a launch file that starts the rosbag (it makes it easier if you loop the bag)
- * View the outputs of the camera and LiDAR / Depth Sensor in RVIZ
- * Write a python node that subscribes to the image and LiDAR topics
- * Use OpenCV to perform face detection on the image
- * Calculate the angles of the LiDAR that overlap the cameras vision (the lidar is 270 degrees, single layer). This can be done roughly.
- * Take the center of detected objects and roughtly figure out the angle they are at 
- * Using that angle to get the LiDAR distnace
- * Output the object type and distance as text
- 
-  ### Exercise stretch
- * Publish the tf of the detected object
+Ask a mentor for the `face_detection.bag` file, which contains lidar and USB camera data. The lidar sensor provides range-bearing measurements over a 270 degree horizontal field of view. 
 
+
+#### Steps:
+
+1. Create a launch file that plays the ROS bag (it makes it easier if you loop the bag).
+1. View the outputs of the camera and lidar (or depth sensor) in `rviz`.
+1. Calculate the range of lidar bearings that overlap the camera's view.
+1. Write a Python node that subscribes to the image and lidar topics.
+1. Use OpenCV to perform face detection on the image.
+1. For each face detected, calculate its range and bearing in the latest lidar scan based on the face centroid.
+1. Output the object type, range and bearing
+1. Stretch: Publish the `tf` of the face detection
